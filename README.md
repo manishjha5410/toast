@@ -1,2 +1,2 @@
 # toast
-toast
+toast Notification
