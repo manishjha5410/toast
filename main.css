@@ -15,13 +15,16 @@
   -o-border-radius: 4px;
 }
 
-
-.container--alert {
-  margin: 2rem;
-  max-width: 420px;
-  min-width: 300px;
+.toast-area {
   position: absolute;
   right: 0;
+  width: 350px;
+  top: 0;
+}
+
+.container--alert {
+  margin: 1rem;
+  max-width: 300px;
   border-radius: 4px;
   display: grid;
   overflow: hidden;
