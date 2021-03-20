@@ -31,3 +31,5 @@ To use toast just use.
 > **Note:**  
 >>💀 Never use Other values For **ContainerPosition** and **Type** other than specified.
 >>⚠️ And Use Only One Toast Area At a particular page
+
+# CopyRight &copy; are restricted License under [MIT License](LICENSE)
