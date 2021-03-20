@@ -13,7 +13,7 @@ To use toast just use.
 - Here time is Time for auto dismiss and Autodismiss is a boolean value
 - Available  options for Container Positions are  top-left,top-center,top-right,bottom-left,bottom-center,bottom-right
 - Available options for Type are success, Error, Info, Warning
-- **Call the above function from a html tag on luck or include in a function**
+- **Call the above function from a html tag onclick or call it inside in a function**
 - **Just enter the I'd "alert-btn" on the submit button or a tag or any element**
 >Example:- ```<button id="alert-btn" onclick="toast('top-right','Warning Don\'t Enter Sensitive Details!','Warning',false,4000)">Show Alert</button>```
 
