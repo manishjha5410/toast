@@ -1,12 +1,12 @@
-var i=-1;
-
 function insertAfter(referenceNode, newNode) {
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function addArea() {
+function addArea(conPosition) {
     var dom = document.createElement('div');
     dom.classList.add("toast-area");
+    dom.setAttribute("position",conPosition);
+    dom.classList.add(conPosition);
     insertAfter(document.querySelector("#alert-btn"),dom);
 }
 
@@ -16,28 +16,35 @@ function removeArea() {
             document.querySelector(".toast-area").remove();
 }
 
-var stringToHTML = function (str) {
+function toastParent(str,type) {
     var dom = document.createElement('div');
     dom.classList.add(`container--alert`);
-    dom.classList.add(`a-${i}`);
+    dom.setAttribute("toastType",type);
 	dom.innerHTML = str;
 	return dom;
 };
 
+// Available options top-left,top-center,top-right,bottom-left,bottom-center,bottom-right
+
+var i=0;
+
 function myfun() {
 
     if(i%4==0)
-        toast('Error','success',false)
+        toast('top-right','Error','success',true,4000)
     else if(i%4==1)
-        toast('Error','error',false)
+        toast('top-right','Error','error',true,4000)
     else if(i%2==0)
-        toast('Error','info',false)
+        toast('top-right','Error','info',true,4000)
     else
-        toast('Error','warning',false)
+        toast('top-right','Error','warning',true,4000)
+
+    i++;
 }
 
-var colors = [
-    "warning"={
+var colors = {
+    "warning":
+    {
         "iconType":"fa-exclamation-triangle",
         "1st background":"#feda9c",
         "1st border":"#fda501",
@@ -48,7 +55,8 @@ var colors = [
         "2nd text":"#cd953c",
         "cross":"#ce8500",
     },
-    "success"={
+    "success":
+    {
         "iconType":"fa-check",
         "1st background":"#c5f3d7",
         "1st border":"#2cd675",
@@ -59,7 +67,8 @@ var colors = [
         "2nd text":"#5eb384",
         "cross":"#22ac57",
     },
-    "error"={
+    "error":
+    {
         "iconType":"fa-fire",
         "1st background":"#ffe1e3",
         "1st border":"#ff4856",
@@ -70,7 +79,8 @@ var colors = [
         "2nd text":"#eb6b71",
         "cross":"#fc4854",
     },
-    "info"={
+    "info":
+    {
         "iconType":"fa-info-circle",
         "1st background":"#d6f0fd",
         "1st border":"#71c7fb",
@@ -81,134 +91,62 @@ var colors = [
         "2nd text":"#59b7ef",
         "cross":"#43b5f5",
     }
-]
+}
 
-function toast(text,type,autoDismiss){
+
+
+function toast(conPosition,text,type,autoDismiss,time=5000)
+{
 
     if(document.querySelector(".toast-area")===null)
-        addArea();
+        addArea(conPosition.toLowerCase());
 
-    if(type.toLowerCase() ==="info")
-    {
-        i++;
-        document.querySelector(".toast-area").appendChild(stringToHTML(`<div class="cell--alert-1"><i class="fas fa-info-circle"></i></div><div class="cell--alert-2">${text}</div><div class="cell--alert-3"><i class="fas fa-times"></i></div>`));
-        document.querySelectorAll(".cell--alert-1")[i].style.background = "#d6f0fd";
-        document.querySelectorAll(".cell--alert-2")[i].style.background = "#d6f0fd";
-        document.querySelectorAll(".cell--alert-1")[i].style.borderLeft = "8px solid #71c7fb";
-        document.querySelectorAll(".cell--alert-1 i")[i].style.color = "#3db7ff";
-        document.querySelectorAll(".cell--alert-2")[i].style.color = "#59b7ef";
-        document.querySelectorAll(".cell--alert-3")[i].style.background = "#9ad8fd";
-        document.querySelectorAll(".cell--alert-3 i")[i].style.color = "#43b5f5";
-    }
-    else if(type.toLowerCase() ==="error")
-    {
-        i++;
-        document.querySelector(".toast-area").appendChild(stringToHTML(`<div class="cell--alert-1"><i class="fas fa-fire"></i></div><div class="cell--alert-2">${text}</div><div class="cell--alert-3"><i class="fas fa-times"></i></div>`));
-        document.querySelectorAll(".cell--alert-1")[i].style.background = "#ffe1e3";
-        document.querySelectorAll(".cell--alert-2")[i].style.background = "#ffe1e3";
-        document.querySelectorAll(".cell--alert-1")[i].style.borderLeft = "8px solid #ff4856";
-        document.querySelectorAll(".cell--alert-1 i")[i].style.color = "#ff4854";
-        document.querySelectorAll(".cell--alert-2")[i].style.color = "#eb6b71";
-        document.querySelectorAll(".cell--alert-3")[i].style.background = "#fc9ba3";
-        document.querySelectorAll(".cell--alert-3 i")[i].style.color = "#fc4854";
-    }
+    type=type.toLowerCase();
 
-    else if(type.toLowerCase() ==="success")
-    {
-        i++;
-        document.querySelector(".toast-area").appendChild(stringToHTML(`<div class="cell--alert-1"><i class="fas fa-check"></i></div><div class="cell--alert-2">${text}</div><div class="cell--alert-3"><i class="fas fa-times"></i></div>`));
-        document.querySelectorAll(".cell--alert-1")[i].style.background = "#c5f3d7";
-        document.querySelectorAll(".cell--alert-2")[i].style.background = "#c5f3d7";
-        document.querySelectorAll(".cell--alert-1")[i].style.borderLeft = "8px solid #2cd675";
-        document.querySelectorAll(".cell--alert-1 i")[i].style.color = "#20ae5e";
-        document.querySelectorAll(".cell--alert-2")[i].style.color = "#5eb384";
-        document.querySelectorAll(".cell--alert-3")[i].style.background = "#94eab9";
-        document.querySelectorAll(".cell--alert-3 i")[i].style.color = "#22ac57";
-    }
-    else if(type.toLowerCase() ==="warning")
-    {
-        i++;
-        document.querySelector(".toast-area").appendChild(stringToHTML(`<div class="cell--alert-1"><i class="fas fa-exclamation-triangle"></i></div><div class="cell--alert-2">${text}</div><div class="cell--alert-3"><i class="fas fa-times"></i></div>`));
-        document.querySelectorAll(".cell--alert-1")[i].style.background = "#feda9c";
-        document.querySelectorAll(".cell--alert-2")[i].style.background = "#feda9c";
-        document.querySelectorAll(".cell--alert-1")[i].style.borderLeft = "8px solid #fda501";
-        document.querySelectorAll(".cell--alert-1 i")[i].style.color = "#ce8507";
-        document.querySelectorAll(".cell--alert-2")[i].style.color = "#cd953c";
-        document.querySelectorAll(".cell--alert-3")[i].style.background = "#ffd080";
-        document.querySelectorAll(".cell--alert-3 i")[i].style.color = "#ce8500";
-    }
+    var node = toastParent(`<div class="cell--alert-1"><i class="fas ${colors[type]["iconType"]}"></i></div><div class="cell--alert-2">${text}</div><div class="cell--alert-3"><i class="fas fa-times"></i></div>`,type);
 
+    document.querySelector(".toast-area").appendChild(node);
+    node.children[0].style.background = colors[type]["1st background"];
+    node.children[1].style.background = colors[type]["2nd background"];
+    node.children[0].style.borderLeft = `8px solid ${colors[type]["1st border"]}`;
+    node.children[0].children[0].style.color = colors[type]["icon"];
+    node.children[1].style.color = colors[type]["2nd text"];
+    node.children[2].style.background = colors[type]["3rd background"];
+    node.children[2].children[0].style.color = colors[type]["cross"];
 
-    document.querySelectorAll('.container--alert')[i].classList.add("show");
-    document.querySelectorAll('.container--alert')[i].classList.remove("hide");
+    node.classList.add("show");
+    node.classList.remove("hide");
+    node.style.animation=`show_slide__${node.parentNode.getAttribute("position")} 1s ease forwards`;
 
     if(autoDismiss)
     {
         setTimeout(function(){
-            document.querySelectorAll('.container--alert')[document.querySelectorAll('.container--alert').length-i-1].classList.remove("show");
-            document.querySelectorAll('.container--alert')[document.querySelectorAll('.container--alert').length-i-1].classList.add("hide");
-            i--;
-            document.querySelectorAll('.container--alert').forEach((key,value) =>{
-                if(key.classList.contains("hide"))
-                {
-                    setTimeout(function(){
-                        try
-                        {
-                            key.parentNode.removeChild(key);
-                            removeArea();
-                        }
-                        catch(e)
-                        {}
-                    },1000);
-                }
-            })
-        },5000);
+            try
+            {
+                node.classList.remove("show");
+                node.classList.add("hide");
+                node.style.animation=`hide_slide__${node.parentNode.getAttribute("position")} 1s ease forwards`;
+                setTimeout(function(){
+                    node.parentNode.removeChild(node);
+                    removeArea();
+                },1000);
+            }
+            catch(e)
+            {}
+        },time);
     }
 
-    document.querySelectorAll('.cell--alert-3').forEach((key,value)=>{
-        key.onclick=function(){
-            key.parentNode.classList.remove("show");
-            key.parentNode.classList.add("hide");
-            setTimeout(function(){
-                try
-                {
-                    key.parentNode.parentNode.removeChild(key.parentNode);
-                    i--;
-                    removeArea();
-                }
-                catch(e)
-                {}
-            },1000);
-        };
+    node.children[2].onclick=()=>{
+        node.children[2].parentNode.classList.remove("show");
+        node.children[2].parentNode.classList.add("hide");
+        node.children[2].parentNode.style.animation=`hide_slide__${node.parentNode.getAttribute("position")} 1s ease forwards`;
+        setTimeout(function(){
+            node.parentNode.removeChild(node.children[2].parentNode);
+            removeArea();
+        },1000);
+    };
 
-        key.onmouseover = function() {
+    node.children[2].onmouseover = () => node.children[2].style.background=colors[node.getAttribute("toasttype")]["3rd background hover"];
 
-            if(key.style.background==="rgb(154, 216, 253)")
-                key.style.background="rgb(121, 203, 252)";
-
-            else if(key.style.background==="rgb(252, 155, 163)")
-                key.style.background="rgb(251, 122, 133)";
-
-            else if(key.style.background==="rgb(148, 234, 185)")
-                key.style.background="rgb(105, 226, 157)";
-
-            else if(key.style.background==="rgb(255, 208, 128)")
-                key.style.background="rgb(255, 199, 102)";
-        };
-
-        key.onmouseout = function() {
-
-            if(key.style.background==="rgb(121, 203, 252)")
-                key.style.background="rgb(154, 216, 253)";
-
-            else if(key.style.background==="rgb(251, 122, 133)")
-                key.style.background="rgb(252, 155, 163)";
-
-            else if(key.style.background==="rgb(105, 226, 157)")
-                key.style.background="rgb(148, 234, 185)";
-
-            else if(key.style.background==="rgb(255, 199, 102)")
-                key.style.background="rgb(255, 208, 128)";
-        };
-    });
+    node.children[2].onmouseout = () => node.children[2].style.background=colors[node.getAttribute("toasttype")]["3rd background"];
 }
