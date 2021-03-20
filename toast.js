@@ -1,8 +1,10 @@
-function insertAfter(referenceNode, newNode) {
+function insertAfter(referenceNode, newNode)
+{
     referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
 
-function addArea(conPosition) {
+function addArea(conPosition)
+{
     var dom = document.createElement('div');
     dom.classList.add("toast-area");
     dom.setAttribute("position",conPosition);
@@ -10,37 +12,21 @@ function addArea(conPosition) {
     insertAfter(document.querySelector("#alert-btn"),dom);
 }
 
-function removeArea() {
+function removeArea()
+{
     if(document.querySelector(".toast-area")!==null)
         if(document.querySelector(".toast-area").childElementCount===0)
             document.querySelector(".toast-area").remove();
 }
 
-function toastParent(str,type) {
+function toastParent(str,type)
+{
     var dom = document.createElement('div');
     dom.classList.add(`container--alert`);
     dom.setAttribute("toastType",type);
 	dom.innerHTML = str;
 	return dom;
 };
-
-// Available options top-left,top-center,top-right,bottom-left,bottom-center,bottom-right
-
-var i=0;
-
-function myfun() {
-
-    if(i%4==0)
-        toast('top-right','Error','success',true,4000)
-    else if(i%4==1)
-        toast('top-right','Error','error',true,4000)
-    else if(i%2==0)
-        toast('top-right','Error','info',true,4000)
-    else
-        toast('top-right','Error','warning',true,4000)
-
-    i++;
-}
 
 var colors = {
     "warning":
