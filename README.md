@@ -13,6 +13,10 @@ To use toast just use.
 - Here time is Time for auto dismiss and Autodismiss is a bollean vaue
 - Available  options for Container Positions are  top-left,top-center,top-right,bottom-left,bottom-center,bottom-right
 - Available options for Type are success, Error, Info, Warning
+- **Call the above function from a html tag on luck or include in a function**
+- **Just enter the I'd "alert-btn" on the submit button or a tag or any element**
+>Example:- ```<button id="alert-btn" onclick="toast('top-right','Warning Don\'t Enter Sensitive Details!','Warning',false,4000)">Show Alert</button>```
+
 
 # Images
 ## Success
@@ -26,4 +30,4 @@ To use toast just use.
 
 > **Note:**  
 >>💀 Never use Other values For **ContainerPosition** and **Type** other than specified.
->> ⚠️ And Use Only One Toast Area At a particular page
+>>⚠️ And Use Only One Toast Area At a particular page
