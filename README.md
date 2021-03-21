@@ -26,7 +26,7 @@ To use toast just use.
 ## Warning
 ![alt text](images/warning.jpg)
 ## Info
-![alt text](images/info.jpg)
+![alt text](images/Info.jpg)
 
 > **Note:**  
 >>💀 Never use Other values For **ContainerPosition** and **Type** other than specified.
