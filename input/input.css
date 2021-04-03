@@ -48,6 +48,7 @@
 .btn-outline.default:focus {
   box-shadow: 0 0 0 0.3rem rgba(64, 64, 64, 0.7);
 }
+
 .btn-outline.primary {
   color: #1489ff;
   border-color: #1489ff;
@@ -56,9 +57,9 @@
   color: #ffffff;
   background-color: #1489ff;
 }
-.btn-outline.primary:focus {
+/* .btn-outline.primary:focus {
   box-shadow: 0 0 0 0.3rem rgba(20, 137, 255, 0.7);
-}
+} */
 
 .btn-outline.success {
   color: #00ce0d;
@@ -68,9 +69,9 @@
   color: #ffffff;
   background-color: #00ce0d;
 }
-.btn-outline.success:focus {
+/* .btn-outline.success:focus {
   box-shadow: 0 0 0 0.3rem rgba(0, 206, 13, 0.7);
-}
+} */
 
 .btn-outline.warning {
   color: #f1da19;
@@ -80,15 +81,10 @@
   color: #ffffff;
   background-color: #f1da19;
 }
-.btn-outline.warning:focus {
+/* .btn-outline.warning:focus {
   box-shadow: 0 0 0 0.3rem rgba(241, 218, 25, 0.7);
-}
-.btn-outline.warning.btn-outline-small:focus {
-  box-shadow: 0 0 0 0.2rem rgba(241, 218, 25, 0.7);
-}
-.btn-outline.warning.btn-outline-large:focus {
-  box-shadow: 0 0 0 0.4rem rgba(241, 218, 25, 0.7);
-}
+} */
+
 .btn-outline.danger {
   color: #ff2323;
   border-color: #ff2323;
@@ -97,9 +93,9 @@
   color: #ffffff;
   background-color: #ff2323;
 }
-.btn-outline.danger:focus {
+/* .btn-outline.danger:focus {
   box-shadow: 0 0 0 0.3rem rgba(255, 35, 35, 0.7);
-}
+} */
 
 .btn-outline.btn-outline-small {
   font-size: 0.8rem;
@@ -114,4 +110,18 @@
 }
 .btn-outline.btn-outline-large i, .btn-outline.btn-outline-large span {
   padding: 0.9rem;
+}
+
+
+.button-range
+{
+    display: flex;
+    flex-direction: column;
+    margin: 3rem 45%;
+    justify-content: space-around;
+}
+
+.button-range button
+{
+    margin: 1rem 0;
 }
