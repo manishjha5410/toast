@@ -81,7 +81,7 @@ var colors = {
 
 
 
-function toast(conPosition,text,type,autoDismiss,time=5000)
+function toast(conPosition,text,type,autoDismiss,time=5000,zindex=9999)
 {
 
     if(document.querySelector(".toast-area")===null)
@@ -89,10 +89,13 @@ function toast(conPosition,text,type,autoDismiss,time=5000)
 
     type=type.toLowerCase();
 
-    var node = toastParent(`<div class="cell--alert-1"><i class="fas ${colors[type]["iconType"]}"></i></div><div class="cell--alert-2">${text}</div><div class="cell--alert-3"><i class="fas fa-times"></i></div>`,type);
+    var node = toastParent(`<div class="cell--alert-1"><i class="fas ${colors[type]["iconType"]}"></i></div><div class="cell--alert-2"></div><div class="cell--alert-3"><i class="fas fa-times"></i></div>`,type);
 
     document.querySelector(".toast-area").appendChild(node);
+
+    node.style.zIndex = zindex;
     node.children[0].style.background = colors[type]["1st background"];
+    node.children[1].innerHTML = text;
     node.children[1].style.background = colors[type]["2nd background"];
     node.children[0].style.borderLeft = `8px solid ${colors[type]["1st border"]}`;
     node.children[0].children[0].style.color = colors[type]["icon"];
