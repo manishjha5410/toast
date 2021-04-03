@@ -20,13 +20,13 @@ To use toast just use.
 
 # Images
 ## Success
-![alt text](images/success.jpg)
+![alt text](https://github.com/manishjha5410/toast/blob/demo/images/success.jpg)
 ## Error
-![alt text](images/error.jpg)
+![alt text](https://github.com/manishjha5410/toast/blob/demo/images/error.jpg)
 ## Warning
-![alt text](images/warning.jpg)
+![alt text](https://github.com/manishjha5410/toast/blob/demo/images/warning.jpg)
 ## Info
-![alt text](images/Info.jpg)
+![alt text](https://github.com/manishjha5410/toast/blob/demo/images/Info.jpg)
 
 > **Note:**  
 >>💀 Never use Other values For **ContainerPosition** and **Type** other than specified.
